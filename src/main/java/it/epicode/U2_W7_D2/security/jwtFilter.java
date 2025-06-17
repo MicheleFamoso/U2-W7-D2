@@ -19,11 +19,7 @@ public class jwtFilter extends OncePerRequestFilter {
     @Autowired
     private JwtTool jwtTool;
 
-    //Verra chiamato ad ogni richesta e fara
-    // Verifica se e presente token
-    //1 Se no token, eccezzione
-    //2 se ha token, viene verificato, se non valido eccezzionew,
-    //se valido accede la richesta ai filtri successivi
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
@@ -44,7 +40,7 @@ public class jwtFilter extends OncePerRequestFilter {
 
 
     }
-        //Serve a non controllare perche appunto quei path permettono di registrasi
+     
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
         return new AntPathMatcher().match("/auth/**", request.getServletPath());
